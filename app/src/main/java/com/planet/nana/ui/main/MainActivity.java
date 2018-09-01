@@ -4,10 +4,12 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
 import com.planet.nana.R;
 import com.planet.nana.databinding.ActivityMainBinding;
 import com.planet.nana.service.LocationListenService;
@@ -29,7 +31,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         MapFragment mapFragment = (MapFragment)fragmentManager
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(googleMap -> {
-            
+            LatLng initPosition = new LatLng(37.5042213,127.0445732);
+
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(initPosition));
+            googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         });
     }
 
