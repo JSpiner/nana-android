@@ -15,24 +15,23 @@ import com.planet.nana.BaseApplication;
 
 public class LocationListenService extends Service {
 
+    public static Location lastTrackedLocation;
     private static final String TAG = LocationListenService.class.getSimpleName();
     private LocationManager mLocationManager = null;
     private static final int LOCATION_INTERVAL = 1000;
     private static final float LOCATION_DISTANCE = 10f;
 
     private class LocationListener implements android.location.LocationListener {
-        Location mLastLocation;
 
         public LocationListener(String provider) {
             Log.i(TAG, "LocationListener " + provider);
-            mLastLocation = new Location(provider);
         }
 
         @Override
         public void onLocationChanged(Location location) {
             Log.i(TAG, "onLocationChanged: " + location);
             Toast.makeText(BaseApplication.application, "GPS 변경됨 : " + location, Toast.LENGTH_LONG).show();
-            mLastLocation.set(location);
+            lastTrackedLocation = location;
         }
 
         @Override
