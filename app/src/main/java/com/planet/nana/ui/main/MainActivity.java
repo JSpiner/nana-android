@@ -1,7 +1,9 @@
-package com.planet.nana;
+package com.planet.nana.ui.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.planet.nana.R;
 
 public class MainActivity extends AppCompatActivity {
 
