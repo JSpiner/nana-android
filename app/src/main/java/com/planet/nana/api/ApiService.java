@@ -1,5 +1,6 @@
 package com.planet.nana.api;
 
+import com.planet.nana.model.LoginResponse;
 import com.planet.nana.model.Zone;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("/auth/login")
-    Completable login(
+    Single<LoginResponse> login(
             @Field("email") String email,
             @Field("password") String password
     );

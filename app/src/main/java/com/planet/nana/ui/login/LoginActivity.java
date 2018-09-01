@@ -16,6 +16,7 @@ import com.planet.nana.databinding.ActivityLoginBinding;
 import com.planet.nana.model.Contact;
 import com.planet.nana.ui.base.BaseActivity;
 import com.planet.nana.ui.main.MainActivity;
+import com.planet.nana.util.Prefer;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -58,7 +59,8 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
                 binding.userPw.getText().toString()
         ).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(() -> {
+                .subscribe(loginResponse -> {
+                            Prefer.putString(Prefer.KEY_LOGINED_ID, loginResponse.getId());
                             showToast("로그인 되셨습니다.");
                             uploadContacts();
                         },
