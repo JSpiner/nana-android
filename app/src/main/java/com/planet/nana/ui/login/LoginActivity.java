@@ -6,8 +6,12 @@ import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.planet.nana.R;
+import com.planet.nana.api.Api;
 import com.planet.nana.databinding.ActivityLoginBinding;
 import com.planet.nana.ui.base.BaseActivity;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import retrofit2.Response;
 
 public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
 
@@ -36,7 +40,19 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
     }
 
     private void requestLogin() {
-        
+        Api.getInstance().login(
+                binding.userId.getText().toString(),
+                binding.userPw.getText().toString()
+        ).observeOn(AndroidSchedulers.mainThread())
+                .map(Response::code)
+                .subscribe(statusCode -> {
+                    if (statusCode == 200) {
+                        Toast.makeText(getBaseContext(), "로그인 되셨습니다.", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Toast.makeText(getBaseContext(), "id/pw를 확인해주세요.", Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
 }
