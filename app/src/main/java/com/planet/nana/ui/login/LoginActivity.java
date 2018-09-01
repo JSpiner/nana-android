@@ -18,6 +18,8 @@ import com.planet.nana.ui.base.BaseActivity;
 import com.planet.nana.ui.main.MainActivity;
 import com.planet.nana.util.Prefer;
 
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -28,6 +30,8 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
             ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
             ContactsContract.CommonDataKinds.Phone.NUMBER
     };
+
+    private UploadDialog uploadDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +58,9 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
     }
 
     private void requestLogin() {
+        uploadDialog = new UploadDialog(this);
+        uploadDialog.show();
+
         Api.getInstance().login(
                 binding.userId.getText().toString(),
                 binding.userPw.getText().toString()
@@ -72,8 +79,10 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
         loadContacts().map(Contact::getName)
                 .toList()
                 .flatMapCompletable(contactList -> Api.getInstance().addContact("1", contactList))
+                .delay(1000 * 4, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(() -> {
+                            uploadDialog.dismiss();
                             showToast("주소록 동기화가 완료되었습니다.");
                             startMainActivity();
                         },
