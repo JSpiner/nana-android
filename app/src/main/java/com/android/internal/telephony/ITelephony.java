@@ -1,4 +1,4 @@
-package com.planet.nana.receiver;
+package com.android.internal.telephony;
 
 public interface ITelephony {
 
