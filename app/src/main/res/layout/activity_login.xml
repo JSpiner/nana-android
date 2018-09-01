@@ -4,26 +4,107 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#015eff"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/user_id"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="id" />
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-        <EditText
-            android:id="@+id/user_pw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="pw"
-            android:inputType="textPassword" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="36dp"
+                android:layout_marginStart="36dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/app_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="@string/app_name"
+                        android:textColor="#000000"
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    android:background="@drawable/radius_4_gray"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="12dp"
+                    android:paddingStart="12dp"
+                    android:paddingTop="8dp">
+
+                    <EditText
+                        android:id="@+id/user_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="id" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/radius_4_gray"
+                    android:paddingBottom="8dp"
+                    android:paddingEnd="12dp"
+                    android:paddingStart="12dp"
+                    android:paddingTop="8dp">
+
+                    <EditText
+                        android:id="@+id/user_pw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="pw"
+                        android:inputType="textPassword" />
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="44dp"
+                    android:background="@drawable/radius_4_blue"
+                    android:text="SIGN UP"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </FrameLayout>
 
         <Button
             android:id="@+id/login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="login" />
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:background="#f44040"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="login"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
