@@ -11,6 +11,7 @@ import com.planet.nana.databinding.ActivityLoginBinding;
 import com.planet.nana.ui.base.BaseActivity;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 
 public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
@@ -43,7 +44,8 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
         Api.getInstance().login(
                 binding.userId.getText().toString(),
                 binding.userPw.getText().toString()
-        ).observeOn(AndroidSchedulers.mainThread())
+        ).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .map(Response::code)
                 .subscribe(statusCode -> {
                     if (statusCode == 200) {
