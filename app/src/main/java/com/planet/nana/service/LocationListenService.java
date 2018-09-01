@@ -30,7 +30,6 @@ public class LocationListenService extends Service {
         @Override
         public void onLocationChanged(Location location) {
             Log.i(TAG, "onLocationChanged: " + location);
-            Toast.makeText(BaseApplication.application, "GPS 변경됨 : " + location, Toast.LENGTH_LONG).show();
             lastTrackedLocation = location;
         }
 
