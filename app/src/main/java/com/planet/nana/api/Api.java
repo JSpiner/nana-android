@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Api {
 
-    private static final String SERVER_URL = "https://test.nana.com/";
+    private static final String SERVER_URL = "http://ec2-13-209-88-11.ap-northeast-2.compute.amazonaws.com/";
     private static ApiService apiService;
 
     public static ApiService getInstance() {
