@@ -79,7 +79,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
         CircleOptions circleOptions = new CircleOptions();
         circleOptions.center(new LatLng(lat, lng));
-        circleOptions.radius(200);
+        circleOptions.radius(zone.getRadius() * 1000);
         circleOptions.strokeColor(Color.BLACK);
         circleOptions.fillColor(0x30ff0000);
         circleOptions.strokeWidth(2);
