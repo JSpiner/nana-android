@@ -47,6 +47,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
         ).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(Response::code)
+                .onErrorReturnItem(500)
                 .subscribe(statusCode -> {
                     if (statusCode == 200) {
                         Toast.makeText(getBaseContext(), "로그인 되셨습니다.", Toast.LENGTH_LONG).show();
