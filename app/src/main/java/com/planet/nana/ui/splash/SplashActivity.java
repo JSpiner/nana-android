@@ -23,6 +23,11 @@ import io.reactivex.Completable;
 
 public class SplashActivity extends BaseActivity<ActivitySplashBinding> {
 
+    private static final String[] REQUEST_PERMISSIONS = new String[] {
+            Manifest.permission.READ_CONTACTS,
+            Manifest.permission.ACCESS_FINE_LOCATION
+    };
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +42,7 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> {
 
     private void checkPermission() {
         TedPermission.with(this)
-                .setPermissions(new String[]{Manifest.permission.READ_CONTACTS})
+                .setPermissions(REQUEST_PERMISSIONS)
                 .setPermissionListener(new PermissionListener() {
                     @Override
                     public void onPermissionGranted() {
