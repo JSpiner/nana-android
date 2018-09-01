@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -68,9 +69,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     private void markZone(Zone zone) {
         double lat = zone.getLatitude();
-        double lng = zone.getLongitute();
-        lat = 37.5042213;
-        lng = 127.0445732;
+        double lng = zone.getLongitude();
 
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(new LatLng(lat, lng))

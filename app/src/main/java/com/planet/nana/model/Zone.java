@@ -6,7 +6,7 @@ public class Zone {
 
     private int id;
     private double latitude;
-    private double longitute;
+    private double longitude;
     private double radius;
     private ArrayList<Contact> contact;
 
@@ -18,8 +18,8 @@ public class Zone {
         return latitude;
     }
 
-    public double getLongitute() {
-        return longitute;
+    public double getLongitude() {
+        return longitude;
     }
 
     public double getRadius() {

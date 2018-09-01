@@ -52,7 +52,7 @@ public class IncomingCallReceiver extends BroadcastReceiver {
                 myLocation.getLatitude(),
                 myLocation.getLongitude(),
                 zone.getLatitude(),
-                zone.getLongitute(),
+                zone.getLongitude(),
                 result
         );
 
