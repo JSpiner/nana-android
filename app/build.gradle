@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 25
@@ -10,6 +9,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -45,10 +45,9 @@ dependencies {
     implementation 'gun0912.ted:tedpermission-rx2:2.2.1'
 
     //google-services
-    implementation('com.google.firebase:firebase-messaging:12.0.1')
-    {
-        exclude group: 'com.android.support', module: 'support-v4'
-    }
+    compile "com.google.firebase:firebase-core:12.0.1"
+    compile "com.google.firebase:firebase-messaging:12.0.1"
 
 
 }
+apply plugin: 'com.google.gms.google-services'
