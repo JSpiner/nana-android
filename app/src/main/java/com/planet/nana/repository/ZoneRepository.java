@@ -34,7 +34,8 @@ public class ZoneRepository {
     private Single<ArrayList<Zone>> fetchFilterZoneList() {
         return Api.getInstance().getZoneList(
                 Prefer.getString(Prefer.KEY_LOGINED_ID)
-        ).subscribeOn(Schedulers.io());
+        ).subscribeOn(Schedulers.io())
+                .doOnSuccess(zoneList -> cachedZoneList = zoneList);
     }
 
     private boolean isCacheExpired() {
