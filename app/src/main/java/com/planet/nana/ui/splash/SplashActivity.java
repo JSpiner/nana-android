@@ -47,7 +47,7 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> {
 
                     @Override
                     public void onPermissionDenied(List<String> deniedPermissions) {
-                        Toast.makeText(getBaseContext(), "권한 허용이 필요합니다!", Toast.LENGTH_LONG);
+                        showToast( "권한 허용이 필요합니다!");
                         checkPermission();
                     }
                 })

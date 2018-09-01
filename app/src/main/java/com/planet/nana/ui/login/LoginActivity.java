@@ -29,7 +29,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
                 requestLogin();
             }
             else {
-                Toast.makeText(this, "id/pw를 입력해주세요.", Toast.LENGTH_LONG).show();
+                showToast("id/pw를 입력해주세요.");
             }
         });
     }
@@ -45,8 +45,8 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
                 binding.userPw.getText().toString()
         ).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(() -> Toast.makeText(getBaseContext(), "로그인 되셨습니다.", Toast.LENGTH_LONG).show(),
-                        throwable -> Toast.makeText(getBaseContext(), "id/pw를 확인해주세요.", Toast.LENGTH_LONG).show());
+                .subscribe(() -> showToast("로그인 되셨습니다."),
+                        throwable -> showToast("id/pw를 확인해주세요."));
     }
 
 }
