@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 public interface ApiService {
 
     @FormUrlEncoded
-    @POST("/login")
+    @POST("/auth/login")
     Completable login(
             @Field("email") String email,
             @Field("password") String password
