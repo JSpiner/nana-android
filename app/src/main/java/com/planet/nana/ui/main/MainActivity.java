@@ -11,6 +11,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -73,15 +74,15 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(new LatLng(lat, lng))
-                .title("마커");
-
+                .title("마커")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_marker));
         googleMap.addMarker(markerOptions);
 
         CircleOptions circleOptions = new CircleOptions();
         circleOptions.center(new LatLng(lat, lng));
+        circleOptions.strokeWidth(0);
         circleOptions.radius(zone.getRadius() * 1000);
-        circleOptions.strokeColor(Color.BLACK);
-        circleOptions.fillColor(0x30ff0000);
+        circleOptions.fillColor(0x30b0d0ff);
         circleOptions.strokeWidth(2);
 
         googleMap.addCircle(circleOptions);
