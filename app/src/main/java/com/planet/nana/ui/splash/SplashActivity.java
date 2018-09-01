@@ -46,7 +46,7 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> {
                 .setPermissionListener(new PermissionListener() {
                     @Override
                     public void onPermissionGranted() {
-                        Completable.timer(1000, TimeUnit.MILLISECONDS)
+                        Completable.timer(2000, TimeUnit.MILLISECONDS)
                                 .subscribe(SplashActivity.this::checkLogin);
                     }
 
