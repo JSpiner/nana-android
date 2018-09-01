@@ -43,4 +43,11 @@ dependencies {
     //permission
     implementation 'gun0912.ted:tedpermission-rx2:2.2.1'
 
+    //google-services
+    implementation('com.google.firebase:firebase-messaging:12.0.1')
+    {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+
+
 }
