@@ -12,7 +12,6 @@ import com.planet.nana.ui.base.BaseActivity;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
 
 public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
 
@@ -46,16 +45,8 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
                 binding.userPw.getText().toString()
         ).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(Response::code)
-                .onErrorReturnItem(500)
-                .subscribe(statusCode -> {
-                    if (statusCode == 200) {
-                        Toast.makeText(getBaseContext(), "로그인 되셨습니다.", Toast.LENGTH_LONG).show();
-                    }
-                    else {
-                        Toast.makeText(getBaseContext(), "id/pw를 확인해주세요.", Toast.LENGTH_LONG).show();
-                    }
-                });
+                .subscribe(() -> Toast.makeText(getBaseContext(), "로그인 되셨습니다.", Toast.LENGTH_LONG).show(),
+                        throwable -> Toast.makeText(getBaseContext(), "id/pw를 확인해주세요.", Toast.LENGTH_LONG).show());
     }
 
 }
