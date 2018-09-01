@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="스플래시 화면"
+                android:text="나만의 공간, DG9"
                 android:textColor="#ffffff"
                 android:textSize="20dp" />
 
