@@ -6,11 +6,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary" />
+
         <fragment
             android:id="@+id/map"
+            class="com.google.android.gms.maps.MapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            class="com.google.android.gms.maps.MapFragment" />
+            android:layout_weight="1" />
 
     </LinearLayout>
 

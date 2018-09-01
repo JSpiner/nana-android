@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -36,8 +37,15 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         super.onCreate(savedInstanceState);
         setContentBinding(R.layout.activity_main);
 
+        initToolbar();
         initMap();
         startLocationService();
+    }
+
+    private void initToolbar() {
+        Toolbar toolbar = ((Toolbar) findViewById(R.id.toolbar));
+        toolbar.setTitle(R.string.app_name);
+        toolbar.setTitleTextColor(Color.WHITE);
     }
 
     private void initMap() {
