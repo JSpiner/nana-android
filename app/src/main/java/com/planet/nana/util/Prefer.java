@@ -8,6 +8,7 @@ import com.planet.nana.BaseApplication;
 public final class Prefer {
 
     public static final String KEY_LOGINED_ID = "keyLoginedId";
+    public static final String KEY_PUSH_TOKEN = "keyPushToken";
 
     private static final String PREFER_NAME = "prefer";
 

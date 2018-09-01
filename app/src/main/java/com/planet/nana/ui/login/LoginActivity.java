@@ -63,6 +63,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
                             Prefer.putString(Prefer.KEY_LOGINED_ID, loginResponse.getId());
                             showToast("로그인 되셨습니다.");
                             uploadContacts();
+                            putPushToken();
                         },
                         throwable -> showToast("id/pw를 확인해주세요."));
     }
@@ -109,6 +110,15 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void putPushToken() {
+        Api.getInstance().putPushToken(
+                binding.userId.getText().toString(),
+                Prefer.getString(Prefer.KEY_PUSH_TOKEN)
+        ).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
     }
 
 }
