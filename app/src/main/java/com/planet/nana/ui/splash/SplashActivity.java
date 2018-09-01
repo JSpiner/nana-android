@@ -25,7 +25,8 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding> {
 
     private static final String[] REQUEST_PERMISSIONS = new String[] {
             Manifest.permission.READ_CONTACTS,
-            Manifest.permission.ACCESS_FINE_LOCATION
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.READ_PHONE_STATE
     };
 
     @Override
