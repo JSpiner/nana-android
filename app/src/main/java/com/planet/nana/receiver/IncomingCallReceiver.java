@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.android.internal.telephony.ITelephony;
+import com.planet.nana.BaseApplication;
 import com.planet.nana.model.Contact;
 import com.planet.nana.model.Zone;
 import com.planet.nana.repository.ContactRepository;
@@ -40,13 +41,16 @@ public class IncomingCallReceiver extends BroadcastReceiver {
         ZoneRepository.getInstance().getFilterZoneList()
                 .observeOn(AndroidSchedulers.mainThread())
                 .flatMapObservable(Observable::fromIterable)
-                .filter(this::isInMyLocation)
+                .filter(zone -> isInMyLocation(context, zone))
                 .filter(zone -> hasMyNumber(zone, number))
                 .subscribe(zone -> endCurrentCall(context, number));
     }
 
-    private boolean isInMyLocation(Zone zone) {
+    private boolean isInMyLocation(Context context, Zone zone) {
         Location myLocation = LocationListenService.lastTrackedLocation;
+        if (myLocation == null) {
+            Toast.makeText(context, "아직 위치정보가 수집되지 않았습니다. 잠시 기다려주세요.", Toast.LENGTH_SHORT).show();
+        }
 
         float[] result =new float[5];
         Location.distanceBetween(
