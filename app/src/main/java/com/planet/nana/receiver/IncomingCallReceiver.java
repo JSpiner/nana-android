@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.internal.telephony.ITelephony;
@@ -56,7 +57,7 @@ public class IncomingCallReceiver extends BroadcastReceiver {
                 result
         );
 
-        float distanceInKm = result[0] * 1000;
+        float distanceInKm = result[0] / 1000;
         return distanceInKm < zone.getRadius();
     }
 
